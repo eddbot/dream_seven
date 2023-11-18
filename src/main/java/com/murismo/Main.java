@@ -22,7 +22,7 @@ public class Main {
             .orElseThrow();
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         updateCloudLevel(99);
         updateCloudStrength(255);
         updateCloudName("Chungus");
