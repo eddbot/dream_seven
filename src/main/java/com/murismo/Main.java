@@ -30,13 +30,6 @@ public class Main {
         var masamune = 127;
         updateCloudWeapon(masamune);
 
-
-//        for (int i = 0; i < 200; i++) {
-//            Thread.sleep(100);
-//            System.out.println(i);
-//
-//        }
-
     }
 
     public static void updateCloudLevel(int level){
@@ -75,7 +68,7 @@ public class Main {
 
         if(!Write(handle, address, toWrite, size, null)){
             throw new RuntimeException("Unable to complete write");
-        };
+        }
     }
 
     public static void packAndWriteSingle(byte data, Pointer address) {
@@ -90,7 +83,7 @@ public class Main {
 
         if(!Write(handle, address, toWrite, size, null)){
             throw new RuntimeException("Unable to complete write");
-        };
+        }
     }
 
     public static boolean Write(HANDLE handle, Pointer address, Pointer buffer, int size, IntByReference bytesWritten){
