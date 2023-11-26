@@ -22,7 +22,7 @@ public class NameInputField extends JTextField {
                 return;
             }
 
-            if(offs < 10 && str.length() <= 10) {
+            if(offs < 9 && str.length() < 10) {
                 super.insertString(offs, str, a );
             }
         }

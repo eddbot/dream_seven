@@ -39,7 +39,7 @@ public class Application {
 
     }
 
-    public void updateCloudLevel(int level){
+    public void updateCloudLevel(int level) {
         Pointer address = new Pointer(CLOUD_CHARACTER);
         packAndWrite(new byte[]{(byte) level}, address);
     }
@@ -56,16 +56,7 @@ public class Application {
         packAndWrite(new byte[]{(byte) weapon}, address);
     }
 
-    public void updateCloudName(String name){
-        long offset = 15;
-        Pointer address = new Pointer(CLOUD_CHARACTER+offset);
-
-        byte[] convertedName = this.letterMapper.convertStringToFF7(name);
-
-        packAndWrite(convertedName, address);
-    }
-
-    public void readChardName(String name){
+    public void updateCloudName(String name){ // this should be in a Character class please
         long offset = 15;
         Pointer address = new Pointer(CLOUD_CHARACTER+offset);
 
