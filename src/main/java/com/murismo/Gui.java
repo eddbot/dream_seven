@@ -20,12 +20,14 @@ public class Gui {
 
         JFrame frame = new JFrame("Dream Seven");
         Container contentPane = frame.getContentPane();
-        contentPane.setLayout(new FlowLayout());
+        contentPane.setLayout(new GridLayout(2,1));
+
+        JPanel connectionPanel = new JPanel();
 
         JLabel statusLabel = new JLabel("Status: ");
         JLabel indicatorLabel = new JLabel();
 
-        JPanel panel = new JPanel();
+        JPanel cloudPanel = new JPanel();
 
 
         JLabel cloudLabel = new JLabel("Cloud Level: ");
@@ -40,12 +42,12 @@ public class Gui {
 
 
 
-        panel.add(cloudLabel);
-        panel.add(cloudLevel);
-        panel.add(cloudNameLabel);
-        panel.add(cloudName);
-        panel.add(updateCloud);
-        panel.setVisible(false);
+        cloudPanel.add(cloudLabel);
+        cloudPanel.add(cloudLevel);
+        cloudPanel.add(cloudNameLabel);
+        cloudPanel.add(cloudName);
+        cloudPanel.add(updateCloud);
+        cloudPanel.setVisible(false);
 
         indicatorLabel.setOpaque(true);
         indicatorLabel.setPreferredSize(new Dimension(20, 20));
@@ -84,7 +86,7 @@ public class Gui {
             if(app.isConnected()) {
                 connectButton.setText("Connect to FF7");
                 indicatorLabel.setBackground(Color.RED);
-                panel.setVisible(false);
+                cloudPanel.setVisible(false);
                 app.disconnect();
                 return;
             }
@@ -94,12 +96,12 @@ public class Gui {
                 connectButton.setText("Disconnect from FF7");
                 cloudLevel.setSelectedItem(app.readStatInformation(new Pointer(Application.CLOUD_CHARACTER)));
                 cloudName.setText(app.readNameInformation(new Pointer(Application.CLOUD_CHARACTER+15)));
-                panel.setVisible(true);
+                cloudPanel.setVisible(true);
                 // ok
             } else {
                 connectButton.setText("Connect to FF7");
                 indicatorLabel.setBackground(Color.RED);
-                panel.setVisible(false);
+                cloudPanel.setVisible(false);
                 JOptionPane.showMessageDialog(frame, "FF7 is not running");
             }
 
@@ -108,10 +110,11 @@ public class Gui {
         });
 
 
-        frame.add(statusLabel);
-        frame.add(indicatorLabel);
-        frame.add(connectButton);
-        frame.add(panel);
+        connectionPanel.add(statusLabel);
+        connectionPanel.add(indicatorLabel);
+        connectionPanel.add(connectButton);
+        frame.add(connectionPanel);
+        frame.add(cloudPanel);
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
