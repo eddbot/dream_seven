@@ -27,7 +27,7 @@ public class Processor {
 
     public Map<String, FF7Character> characterList(){
         return Map.ofEntries(
-                Map.entry("cloud", new FF7Character(0xDBFD8D, engine))
+                Map.entry("cloud", new FF7Character("Cloud", 0xDBFD8D, engine))
         );
     }
 }

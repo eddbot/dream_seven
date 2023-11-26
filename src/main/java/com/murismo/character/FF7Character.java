@@ -12,11 +12,19 @@ public class FF7Character {
 
     private final long LEVEL_OFFSET = 0x00;
     private final long NAME_OFFSET = 0x0f;
+    private final String defaultName;
 
-    public FF7Character(long address, MemoryEngine engine) {
+
+
+
+    public FF7Character(String defaultName, long address, MemoryEngine engine) {
+        this.defaultName = defaultName;
         this.address = address;
         this.engine = engine;
         this.letterMapper = new LetterMapper();
+    }
+    public String getDefaultName() {
+        return defaultName;
     }
 
     public void setLevel(int level) {
@@ -44,7 +52,7 @@ public class FF7Character {
         Pointer address = calculatePointer(NAME_OFFSET);
         return engine.readNameInformation(address);
     }
-    
+
 //    public void updateStrength(int strength){
 //        long offset = 1;
 //        Pointer address = new Pointer(CLOUD_CHARACTER+offset);
