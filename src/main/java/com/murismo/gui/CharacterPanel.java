@@ -3,6 +3,7 @@ package com.murismo.gui;
 import com.murismo.character.FF7Character;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.stream.IntStream;
 
 public class CharacterPanel extends JPanel {
