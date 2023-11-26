@@ -1,4 +1,4 @@
-package com.murismo;
+package com.murismo.gui;
 
 import javax.swing.*;
 import javax.swing.text.AttributeSet;

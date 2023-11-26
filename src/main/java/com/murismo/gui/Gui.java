@@ -1,19 +1,18 @@
-package com.murismo;
+package com.murismo.gui;
 
-import com.sun.jna.Pointer;
+import com.murismo.character.FF7Character;
+import com.murismo.core.Processor;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Formatter;
-import java.util.List;
 import java.util.stream.IntStream;
 
 public class Gui {
 
-    private final Application app;
+    private final Processor processor;
 
-    public Gui(Application app) {
-        this.app = app;
+    public Gui(Processor processor) {
+        this.processor = processor;
     }
 
     public void start(){
@@ -72,10 +71,10 @@ public class Gui {
                 return;
             }
 
-            // cloud.setLevel(level);
-            // this should be 'updateStat(characterClass.getLevel)'
-            app.updateCloudLevel(level);
-            app.updateCloudName(name);
+            FF7Character cloud = processor.characterList().get("cloud");
+
+            cloud.setLevel(level);
+            cloud.setName(name);
 
 
             JOptionPane.showMessageDialog(frame, "Stats updated");
@@ -83,21 +82,23 @@ public class Gui {
 
         connectButton.addActionListener(e -> {
 
-            if(app.isConnected()) {
+            FF7Character cloud = processor.characterList().get("cloud");
+
+            if(processor.isConnected()) {
                 connectButton.setText("Connect to FF7");
                 indicatorLabel.setBackground(Color.RED);
                 cloudPanel.setVisible(false);
-                app.disconnect();
+                processor.disconnect();
                 return;
             }
 
-            if(app.connectToGame()) {
+            if(processor.connect()) {
                 indicatorLabel.setBackground(Color.GREEN);
                 connectButton.setText("Disconnect from FF7");
-                cloudLevel.setSelectedItem(app.readStatInformation(new Pointer(Application.CLOUD_CHARACTER)));
-                cloudName.setText(app.readNameInformation(new Pointer(Application.CLOUD_CHARACTER+15)));
+
+                cloudLevel.setSelectedItem(cloud.getLevel());
+                cloudName.setText(cloud.getName());
                 cloudPanel.setVisible(true);
-                // ok
             } else {
                 connectButton.setText("Connect to FF7");
                 indicatorLabel.setBackground(Color.RED);

@@ -1,4 +1,4 @@
-package com.murismo;
+package com.murismo.utils;
 
 import java.util.*;
 
