@@ -101,7 +101,7 @@ public class LetterMapper {
     public byte[] convertStringToFF7(String str) {
 
         if(str.length() > 9) {
-            throw new RuntimeException("String too long bebbe");
+            throw new RuntimeException("String too long");
         }
         
         byte[] packed = new byte[10];
@@ -113,5 +113,12 @@ public class LetterMapper {
             packed[i] = finder.get(chars[i]);
         }
         return packed;
+    }
+
+    public String convertFF7ToString(byte[] name) {
+
+        return "Silly";
+
+
     }
 }
