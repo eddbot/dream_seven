@@ -18,7 +18,7 @@ public class Gui {
     }
 
     private List<CharacterPanel> createCharacterPanels(JFrame frame){
-        return this.processor.characterList().values().stream().map(character -> {
+        return this.processor.characterList().stream().map(character -> {
             CharacterPanel characterPanel = new CharacterPanel(character, frame);
             characterPanel.setVisible(false);
             return characterPanel;
