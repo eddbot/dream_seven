@@ -11,6 +11,7 @@ public class FF7Character {
     private final LetterMapper letterMapper;
 
     private final long LEVEL_OFFSET = 0x00;
+    private final long NAME_OFFSET = 0x0f;
 
     public FF7Character(long address, MemoryEngine engine) {
         this.address = address;
@@ -32,6 +33,18 @@ public class FF7Character {
         return new Pointer(this.address+offset);
     }
 
+
+    public void setName(String name){
+        Pointer address = calculatePointer(NAME_OFFSET);
+        byte[] convertedName = this.letterMapper.convertStringToFF7(name);
+        engine.packAndWrite(convertedName, address);
+    }
+
+    public String getName() {
+        Pointer address = calculatePointer(NAME_OFFSET);
+        return engine.readNameInformation(address);
+    }
+    
 //    public void updateStrength(int strength){
 //        long offset = 1;
 //        Pointer address = new Pointer(CLOUD_CHARACTER+offset);
@@ -43,20 +56,4 @@ public class FF7Character {
 //        Pointer address = new Pointer(CLOUD_CHARACTER+offset);
 //        engine.packAndWrite(new byte[]{(byte) weapon}, address);
 //    }
-
-    public void setName(String name){
-        long offset = 15;
-        Pointer address = new Pointer(this.address+offset);
-
-        byte[] convertedName = this.letterMapper.convertStringToFF7(name);
-
-        engine.packAndWrite(convertedName, address);
-    }
-
-    public String getName() {
-        long offset = 15;
-        Pointer address = new Pointer(this.address+offset);
-
-        return engine.readNameInformation(address);
-    }
 }

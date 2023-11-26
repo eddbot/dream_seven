@@ -19,22 +19,19 @@ public class Gui {
 
         JFrame frame = new JFrame("Dream Seven");
         Container contentPane = frame.getContentPane();
-        contentPane.setLayout(new GridLayout(2,1));
+        contentPane.setLayout(new GridLayout(16,1));
 
         JPanel connectionPanel = new JPanel();
-
         JLabel statusLabel = new JLabel("Status: ");
         JLabel indicatorLabel = new JLabel();
 
+
+
         JPanel cloudPanel = new JPanel();
-
-
         JLabel cloudLabel = new JLabel("Cloud Level: ");
         Integer[] levels = IntStream.range(1,100).boxed().toArray(Integer[]::new);
         JComboBox<Integer> cloudLevel = new JComboBox<>(levels);
         JButton updateCloud = new JButton("Update");
-
-
         JLabel cloudNameLabel = new JLabel("Cloud Name: ");
         NameInputField cloudName = new NameInputField(12);
 
@@ -47,6 +44,8 @@ public class Gui {
         cloudPanel.add(cloudName);
         cloudPanel.add(updateCloud);
         cloudPanel.setVisible(false);
+
+
 
         indicatorLabel.setOpaque(true);
         indicatorLabel.setPreferredSize(new Dimension(20, 20));
@@ -115,7 +114,14 @@ public class Gui {
         connectionPanel.add(indicatorLabel);
         connectionPanel.add(connectButton);
         frame.add(connectionPanel);
-        frame.add(cloudPanel);
+
+
+
+        frame.add(cloudPanel); // one for each char
+
+
+
+
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
