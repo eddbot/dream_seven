@@ -36,6 +36,7 @@ public class CharacterPanel extends JPanel {
 
         JLabel charLabel = new JLabel("%s Level: ".formatted(label));
         JButton updateCharacter = new JButton("Update");
+        updateCharacter.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         JLabel characterNameLabel = new JLabel("%s Name: ".formatted(label));
 
         updateCharacter.addActionListener(e -> {
