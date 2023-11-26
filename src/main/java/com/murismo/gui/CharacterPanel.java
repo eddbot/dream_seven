@@ -57,11 +57,10 @@ public class CharacterPanel extends JPanel {
             JOptionPane.showMessageDialog(frame, "Stats updated");
         });
 
-
         this.add(charLabel);
         this.add(levelBox);
-        this.add(updateCharacter);
         this.add(characterNameLabel);
         this.add(characterNameInput);
+        this.add(updateCharacter);
     }
 }

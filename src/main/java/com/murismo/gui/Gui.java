@@ -41,8 +41,6 @@ public class Gui {
         indicatorLabel.setPreferredSize(new Dimension(20, 20));
         indicatorLabel.setBackground(Color.RED);
 
-
-
         JButton connectButton = new JButton("connect to FF7");
         connectButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
@@ -79,8 +77,6 @@ public class Gui {
         connectionPanel.add(indicatorLabel);
         connectionPanel.add(connectButton);
         frame.add(connectionPanel);
-
-
 
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
